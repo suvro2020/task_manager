@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1>Task Manager</h1>
+    <form method="POST" action="{{ url_for('main.add_task') }}">
+        <input type="text" name="task_name" placeholder="Add a new task" required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <h2>Pending Tasks</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.task_name }} 
+                <a href="{{ url_for('main.complete_task', task_id=task.id) }}">Complete</a> 
+                <a href="{{ url_for('main.delete_task', task_id=task.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

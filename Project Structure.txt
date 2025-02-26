@@ -1,0 +1,16 @@
+task_manager/
+│
+├── app/
+│   ├── __init__.py
+│   ├── database.py
+│   ├── routes.py
+│   └── templates/
+│       ├── index.html
+│       └── layout.html
+│   └── static/
+│       └── styles.css
+│
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── run.py

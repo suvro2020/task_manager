@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    networks:
+      - task_network
+
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: task_manager
+      volumes:
+          - mysqldata:/var/lib/mysql
+      DB_HOST: localhost
+      DB_USER: root
+      DB_PASSWORD: rootpassword
+      DB_NAME: task_manager
+
+    ports:
+      - "3306:3306"
+    networks:
+      - task_network
+networks:
+  task_network:
+    driver: bridge
